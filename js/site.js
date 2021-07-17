@@ -12,7 +12,7 @@ function getValues(e){
   //check that the numbers are integers
   if (Number.isInteger(fizzValue) && Number.isInteger(buzzValue)){
     //we call fizzBuzz
-    let fbArray = fizzBuzz(fizzValue, buzzValue);
+    let fbArray = fizzBuzzC(fizzValue, buzzValue);
     
     //call displayData and write the values to the screeen
     displayData(fbArray)
@@ -28,7 +28,7 @@ function fizzBuzz(fizzValue, buzzValue){
   let returnArray = [];
 
   //Loop from 1 to 100
-  for(let i=0; i < 100; i++){
+  for(let i=1; i < 100; i++){
     //We need check the current in three steps
     //1.check to see if divisible by Both (3 and 5)
     //if so push 'FizzBuzz' into an array and not the number
@@ -53,6 +53,54 @@ function fizzBuzz(fizzValue, buzzValue){
   }
 
   return returnArray;
+}
+
+//another way or algorithm
+function fizzBuzzB(fizzValue, buzzValue){
+  let returnArray = [];
+  let Fizz = false;
+  let Buzz = false;
+
+  for(let i=1; i<100; i++){
+
+    //evaluate to True/False
+    Fizz = i % fizzValue == 0;
+    Buzz = i % buzzValue == 0;
+
+    switch(true){
+      case Fizz && Buzz:{
+        returnArray.push('FizzBuzz');
+        break;
+      }
+      case Fizz: {
+        returnArray.push('Fizz');
+        break;
+      }
+      case Buzz: {
+        returnArray.push('Buzz');
+      }
+      default: {
+        returnArray.push(i);
+        break;
+      }
+    }
+  }
+
+  return returnArray;
+}
+
+//MYTHICAL STRAT
+function fizzBuzzC(fizzValue, buzzValue){
+  let returnArray = [];
+
+  for(i=1; i<=100; i++){
+    //ternary operator
+    let value = ((i % fizzValue == 0 ? 'Fizz' : '') + (i % buzzValue == 0 ? 'Buzz' : '') || i);
+    returnArray.push(value);
+  }
+
+  return returnArray;
+
 }
 
 //loop over the array and create a tablerow for each item.
